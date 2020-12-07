@@ -28,7 +28,8 @@ lazy val client = (project in file("client"))
     scalaJSUseMainModuleInitializer in Test := false,
     resolvers += Resolver.jcenterRepo,
     libraryDependencies ++= Seq(
-      "org.scala-js"      %%% "scalajs-dom"   % "0.9.7",
+      "org.scala-js"      %%% "scalajs-dom"   % "1.1.0",
+      "in.nvilla"         %%% "monadic-html"  % "0.4.0",
       "com.typesafe.play" %%% "play-json"     % "2.8.1",
       "org.querki"        %%% "jquery-facade" % "1.2"
     )
