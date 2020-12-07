@@ -24,7 +24,7 @@ lazy val server = (project in file("server"))
 lazy val client = (project in file("client"))
   .settings(
     scalaVersion := scalaV,
-    scalaJSUseMainModuleInitializer := false,
+    scalaJSUseMainModuleInitializer := true,
     scalaJSUseMainModuleInitializer in Test := false,
     resolvers += Resolver.jcenterRepo,
     libraryDependencies ++= Seq(
