@@ -58,6 +58,7 @@ object ReactiveHtml {
         <p>2. scala string 이 아닌 js object 를 파라미터로 넘겨야 할 때는 scalajs facade 이용(?)</p>
         <p>3. form 에서 user input 을 읽는 것은 scalajs 를 이용해 scala variable 로 읽는 것이 가능</p>
         <p>4. 모든 것을 scala 로 처리 가능 !!!</p>
+        <p>playframework 의 routes 를 사용하지 않고 SPA 로 만든다면, Main.main(args) 에서 mount(document.body, content) 로 시작하자</p>
         <div id="plotly_chart"></div>
         <script>
           Plotly.newPlot('plotly_chart', {json});
