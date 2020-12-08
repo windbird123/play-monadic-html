@@ -1,86 +1,100 @@
 @import RawFieldConstructorHelper._
 @(tab: String, searchForm: Form[Search])(implicit messages: Messages)
 
-    @main("Play with Scala.js") {
-        @*
-        주의: 처음 시작 탭을 지정할려면 다음 두군데 모두에서 일관되게 'active' 값을 설정해야 한다!!!
-        1. menu.item 의 chart 에서 지정해야 함
-        2. menu item 에서 data-tab 속성을 사용할 경우 tab segment 에서 해당 data-tab 을 찾아 지정해야 함 - 두군데 모두 지정 (여기서는 사용 안했지만)
+@main("Play with Scala.js") {
+    @*
+    주의: 처음 시작 탭을 지정할려면 다음 두군데 모두에서 일관되게 'active' 값을 설정해야 한다!!!
+    1. menu.item 의 chart 에서 지정해야 함
+    2. menu item 에서 data-tab 속성을 사용할 경우 tab segment 에서 해당 data-tab 을 찾아 지정해야 함 - 두군데 모두 지정 (여기서는 사용 안했지만)
 
-        SPA 을 만든다면 여기서 처럼 href 를 사용하기 보다는 data-tab 을 써서 (탭이동이 client side 에서 이루어짐) 간단하고 빠르게 개발하는 것이 좋다 !!!
-        그리고 잊지말고 $('.menu .item').tab(); 도 추가해 줘야 한다.
-        *@
-        <div class="ui top attached inverted menu">
-            <div class="header item">Brand</div>
-            <a class='item @("active".when(tab == "basic"))' href='@routes.Application.index("basic")'>Basic</a>
-            <a class='item @("active".when(tab == "canvas"))' href='@routes.Application.index("canvas")'> Canvas</a>
-            <a class='item @("active".when(tab == "ajax"))' href='@routes.Application.index("ajax")'>Ajax</a>
-            <a class='item @("active".when(tab == "reactive"))' href='@routes.Application.index("reactive")'>
-                Reactive Html</a>
-            <a class='item @("active".when(tab == "chart"))' href='@routes.Application.index("chart")'> Chart</a>
-            <a class='item @("active".when(tab == "jqueryPlugin"))' href='@routes.Application.index("jqueryPlugin")'>
-                JQuery Plugin</a>
+    SPA 을 만든다면 여기서 처럼 href 를 사용하기 보다는 data-tab 을 써서 (탭이동이 client side 에서 이루어짐) 간단하고 빠르게 개발하는 것이 좋다 !!!
+    그리고 잊지말고 $('.menu .item').tab(); 도 추가해 줘야 한다.
+    *@
+    <div class="ui top attached inverted menu">
+        <div class="header item">Brand</div>
+        <a class='item @("active".when(tab == "basic"))' href='@routes.Application.index("basic")'>Basic</a>
+        <a class='item @("active".when(tab == "canvas"))' href='@routes.Application.index("canvas")'> Canvas</a>
+        <a class='item @("active".when(tab == "ajax"))' href='@routes.Application.index("ajax")'>Ajax</a>
+        <a class='item @("active".when(tab == "reactive"))' href='@routes.Application.index("reactive")'>
+            Reactive Html</a>
+        <a class='item @("active".when(tab == "chart"))' href='@routes.Application.index("chart")'> Chart</a>
+        <a class='item @("active".when(tab == "jqueryPlugin"))' href='@routes.Application.index("jqueryPlugin")'>
+            JQuery Plugin</a>
 
-            <div class="ui dropdown item" tabindex="0">
-                Dropdown
-                <i class="dropdown icon"></i>
-                <div class="menu transition hidden" tabindex="-1">
-                    <div class="item">Action</div>
-                    <div class="item">Another Action</div>
-                    <div class="item">Something else here</div>
-                    <div class="divider"></div>
-                    <div class="item">Separated Link</div>
-                    <div class="divider"></div>
-                    <div class="item">One more separated link</div>
-                </div>
-            </div>
-            <div class="right menu">
-                @* padding 은 맨위 메뉴가 너무 두꺼워지는 것 같아 (form 추가로..) 수정해 봄 - using chrome *@
-                <div class="item" style="padding-top: 6px;
-                    padding-bottom: 6px;">
-
-                @helper.form(action = routes.Application.index(tab)) {
-                    <div class="ui action left icon input">
-                        <i class="search icon"></i>
-                        @helper.inputText(searchForm("query"), Symbol("type") -> "text", Symbol("placeholder") -> "Search")
-                        <button class="ui button" type="submit">Submit</button>
-                    </div>
-                }
-                </div>
-                <a class="item">Link</a>
+        <div class="ui dropdown item" tabindex="0">
+            Dropdown
+            <i class="dropdown icon"></i>
+            <div class="menu transition hidden" tabindex="-1">
+                <div class="item">Action</div>
+                <div class="item">Another Action</div>
+                <div class="item">Something else here</div>
+                <div class="divider"></div>
+                <div class="item">Separated Link</div>
+                <div class="divider"></div>
+                <div class="item">One more separated link</div>
             </div>
         </div>
-        <div class="ui bottom attached tab segment @("active".when(tab == "basic"))">
-            <div id="basic_content"></div>
+        <div class="right menu">
+            @* padding 은 맨위 메뉴가 너무 두꺼워지는 것 같아 (form 추가로..) 수정해 봄 - using chrome *@
+            <div class="item" style="padding-top: 6px;
+                padding-bottom: 6px;">
+
+            @helper.form(action = routes.Application.index(tab)) {
+                <div class="ui action left icon input">
+                    <i class="search icon"></i>
+                    @helper.inputText(searchForm("query"), Symbol("type") -> "text", Symbol("placeholder") -> "Search")
+                    <button class="ui button" type="submit">Submit</button>
+                </div>
+            }
+            </div>
+            <a class="item">Link</a>
         </div>
+    </div>
+    <div class="ui bottom attached tab segment @("active".when(tab == "basic"))">
+        <div id="basic_content"></div>
+    </div>
 
-        <div class="ui bottom attached tab segment @("active".when(tab == "canvas"))">
-            <div id="canvas_content"></div>
-        </div>
+    <div class="ui bottom attached tab segment @("active".when(tab == "canvas"))">
+        <canvas id="canvas_clock" style="display: block" width="255" height="255"></canvas>
+        <canvas id="canvas_pyramid" style="display: block" width="255" height="255"></canvas>
+    </div>
 
-        <div class="ui bottom attached tab segment @("active".when(tab == "ajax"))">
-            <div id="ajax_content"></div>
-        </div>
+    <div class="ui bottom attached tab segment @("active".when(tab == "ajax"))">
+        <div id="ajax_content"></div>
+    </div>
 
-        <div class="ui bottom attached tab segment @("active".when(tab == "reactive"))">
-            <div id="reactive_content"></div>
-        </div>
+    <div class="ui bottom attached tab segment @("active".when(tab == "reactive"))">
+        <div id="reactive_content"></div>
+    </div>
 
-        <div class="ui bottom attached tab segment @("active".when(tab == "chart"))">
-            <div id="chart_content"></div>
-        </div>
+    <div class="ui bottom attached tab segment @("active".when(tab == "chart"))">
+        <div id="chart_line"></div>
+        <div id="chart_bar"></div>
+    </div>
 
-        <div class="ui bottom attached tab segment @("active".when(tab == "jqueryPlugin"))">
-            <div id="jqueryPlugin_content"></div>
-        </div>
+    <div class="ui bottom attached tab segment @("active".when(tab == "jqueryPlugin"))">
+        <div id="jqueryPlugin_content"></div>
+    </div>
 
-        <script>
-                // menu 에서 data-tab 속성 대신에 href 를 사용해서 아래는 .tab() 은 제거해야 함 !!!
-                // $('.menu .item').tab();
-                $('.ui .dropdown').dropdown();
+    <script>
+            // menu 에서 data-tab 속성 대신에 href 를 사용해서 아래는 .tab() 은 제거해야 함 !!!
+            // $('.menu .item').tab();
+            $('.ui .dropdown').dropdown();
 
-                $(document).ready(function () {
-                    ReactiveHtml.init("reactive_content", "@searchForm("query").value.getOrElse("")")
-                })
-        </script>
-    }
+            $(document).ready(function () {
+                ReactiveHtml.init("reactive_content", "@searchForm("query").value.getOrElse("")")
+            })
+
+            $(document).ready(function () {
+                BasicHtml.init("basic_content", "@searchForm("query").value.getOrElse("")")
+            })
+
+            $(document).ready(function () {
+                AjaxHtml.init("ajax_content", "@searchForm("query").value.getOrElse("")")
+            })
+
+            $(document).ready(function () {
+                JQueryHtml.init("jqueryPlugin_content", "@searchForm("query").value.getOrElse("")")
+            })
+    </script>
+}
