@@ -3,11 +3,11 @@ package org.github.windbird123.play.monadic.basicTab
 import mhtml._
 import org.github.windbird123.play.monadic.shared.basicTab.SharedMessage
 import org.scalajs.dom
-import org.scalajs.dom.document
+import org.scalajs.dom.{Event, document}
 import org.scalajs.dom.raw.HTMLElement
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
+import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 
 @JSExportTopLevel("BasicHtml")
 object BasicHtml {
@@ -36,7 +36,7 @@ object BasicHtml {
       <div>
         <h1>Add Child Html Component</h1>
         <button type="button" onclick={
-        (e: js.Dynamic) => appendParNode(e.currentTarget.asInstanceOf[HTMLElement], "Button Clicked")
+        (e: Event) => appendParNode(e.target.asInstanceOf[HTMLElement], "Button Clicked")
       }>
           Add message to bottom
         </button>
