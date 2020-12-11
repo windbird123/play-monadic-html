@@ -7,16 +7,20 @@ import org.scalajs.dom.ext.Ajax
 import org.scalajs.dom.raw.HTMLInputElement
 import play.api.libs.json.Json
 
-import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
-import scala.util.{ Success, Try }
+import scala.scalajs.js
+import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
+import scala.util.{Success, Try}
 
 @JSExportTopLevel("DragdropHtml")
 object DragdropHtml {
   @JSExport
   def init(id: String, query: String): Unit = {
     val dragdropContent = document.getElementById(id)
-    lazy val sortable   = Sortable(document.getElementById("items"))
+    var sortable : Sortable  =  null
 
+
+
+    // item class 에 style="display:inline-block;"  항목을 넣으면 가로로 배열
     val list =
         <div id="items" class="ui middle aligned selection list">
             <div data-id="ID_1" class="item">
@@ -49,6 +53,8 @@ object DragdropHtml {
         </div>
 
     mount(dragdropContent, content)
-    Sortable(document.getElementById("items"))
+
+  sortable = Sortable(document.getElementById("items"))
   }
+
 }
