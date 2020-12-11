@@ -14,7 +14,7 @@ import scala.util.{ Success, Try }
 object DragdropHtml {
   @JSExport
   def init(id: String, query: String): Unit = {
-    val dropdropContent = document.getElementById(id)
+    val dragdropContent = document.getElementById(id)
     lazy val sortable   = Sortable(document.getElementById("items"))
 
     val list =
@@ -36,6 +36,7 @@ object DragdropHtml {
             </div>
         </div>
 
+    // 실제 개발에서는 Rx 를 사용하게 될 것 같다.
     val button = {
       <button type="button" onclick={() => document.getElementById("ordered").textContent = sortable.toArray().toString}>READ ORDER</button>
     }
@@ -47,7 +48,7 @@ object DragdropHtml {
             <div id="ordered"></div>
         </div>
 
-    mount(dropdropContent, content)
+    mount(dragdropContent, content)
     Sortable(document.getElementById("items"))
   }
 }
