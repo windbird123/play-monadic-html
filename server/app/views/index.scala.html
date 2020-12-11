@@ -18,6 +18,7 @@
         <a class='item @("active".when(tab == "reactive"))' href='@routes.Application.index("reactive")'>
             Reactive Html</a>
         <a class='item @("active".when(tab == "chart"))' href='@routes.Application.index("chart")'> Chart</a>
+        <a class='item @("active".when(tab == "dragdrop"))' href='@routes.Application.index("dragdrop")'> Drag & Drop</a>
         <a class='item @("active".when(tab == "jqueryPlugin"))' href='@routes.Application.index("jqueryPlugin")'>
             JQuery Plugin</a>
 
@@ -70,6 +71,10 @@
     <div class="ui bottom attached tab segment @("active".when(tab == "chart"))">
         <div id="chart_line"></div>
         <div id="chart_bar"></div>
+    </div>
+
+    <div class="ui bottom attached tab segment @("active".when(tab == "dragdrop"))">
+        @views.html.dragDrop()
     </div>
 
     <div class="ui bottom attached tab segment @("active".when(tab == "jqueryPlugin"))">
