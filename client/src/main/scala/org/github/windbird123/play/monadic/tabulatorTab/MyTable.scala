@@ -14,10 +14,24 @@ object MyTable {
   def init(id: String, query: String): Unit = {
     var tabulator : Tabulator = null
 
-    val rowToAdd =  js.Array(js.Dictionary[Any]("id" -> "3", "name" -> "windbird", "age" -> "22"))
+
+    // 아래처럼 js.Array 로 js.Object 를 생성해도 되지만,
+    // json string 을 그대로 넘겨도 된다 !!!!
+
+//    val rowToAdd =  js.Array(js.Dictionary[Any]("id" -> "3", "name" -> "windbird", "age" -> "22"))
+    val rowToAdd =
+        s"""{
+           |  "id": "3",
+           |  "name": "windbird",
+           |  "age": "22"
+           |}
+           |""".stripMargin.asInstanceOf[js.Object]
+
+
     val content =
       <div>
-        <button id="add-row" onclick={() => tabulator.addRow(rowToAdd, true); ()}>Add Blank Row to bottom</button>
+        <button id="add-row" onclick={() => tabulator.addRow(rowToAdd, true); ()}>Add windbird Row to top</button>
+        <button id="del-row" onclick={ () => tabulator.deleteRow("2".asInstanceOf[js.Object])}>Delete Row "Oli Bob"</button>
         <div id="example-table"></div>
       </div>
 

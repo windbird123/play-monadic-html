@@ -13,20 +13,6 @@ class Tabulator(id: String, options: js.Dictionary[Any]) extends js.Any {
     def addRow(data: js.Object): js.Promise[RowComponent] = js.native
     def addRow(data: js.Object, addToTop: Boolean): js.Promise[RowComponent] = js.native
 
-
-//    def addRow(): js.Promise[RowComponent] = js.native
-//    def addRow(data: js.UndefOr[scala.Nothing], addToTop: js.UndefOr[scala.Nothing], positionTarget: RowLookup): js.Promise[RowComponent] = js.native
-//    def addRow(data: js.UndefOr[scala.Nothing], addToTop: Boolean): js.Promise[RowComponent] = js.native
-//    def addRow(data: js.UndefOr[scala.Nothing], addToTop: Boolean, positionTarget: RowLookup): js.Promise[RowComponent] = js.native
-//    def addRow(data: js.Object): js.Promise[RowComponent] = js.native
-//    def addRow(data: js.Object, addToTop: js.UndefOr[scala.Nothing], positionTarget: RowLookup): js.Promise[RowComponent] = js.native
-//    def addRow(data: js.Object, addToTop: Boolean): js.Promise[RowComponent] = js.native
-//    def addRow(data: js.Object, addToTop: Boolean, positionTarget: RowLookup): js.Promise[RowComponent] = js.native
-//
-//    def deleteRow(index: js.Array[RowLookup]): Unit = js.native
-//    /** You can delete any row in the table using the deleteRow function. */
-//    def deleteRow(index: RowLookup): Unit = js.native
-//
-//    def deselectRow(): Unit = js.native
-//    def deselectRow(row: RowLookup): Unit = js.native
+    def deleteRow(index: js.Array[js.Object]): Unit = js.native
+    def deleteRow(index: js.Object): Unit = js.native
 }
