@@ -2,11 +2,8 @@ package org.github.windbird123.play.monadic.tabulatorTab
 
 import mhtml._
 import org.scalajs.dom.document
-import org.scalajs.dom.ext.Ajax
-import org.scalajs.dom.raw.{Event, HTMLDivElement, HTMLElement, HTMLInputElement}
-import play.api.libs.json.Json
+import org.scalajs.dom.raw.{Event, HTMLElement}
 
-import scala.collection.mutable
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 
@@ -15,29 +12,32 @@ object MyTable {
 
   @JSExport
   def init(id: String, query: String): Unit = {
-    val content = <div id="example-table"></div>
+    var tabulator : Tabulator = null
+
+    val rowToAdd =  js.Array(js.Dictionary[Any]("id" -> "3", "name" -> "windbird", "age" -> "22"))
+    val content =
+      <div>
+        <button id="add-row" onclick={() => tabulator.addRow(rowToAdd, true); ()}>Add Blank Row to bottom</button>
+        <div id="example-table"></div>
+      </div>
 
     mount(document.getElementById(id), content)
 
-    val f: js.Function2[Event, RowComponent, Unit] = (x: Event, y: RowComponent) => y.delete()
+    val f: js.Function2[Event, RowComponent, Unit] = (e: Event, row: RowComponent) =>
+      println(row.getData().asInstanceOf[HTMLElement].id)
 
-    import js.JSConverters._
+    val tableData = js.Array(js.Dictionary[Any]("id" -> "2", "name" -> "Oli Bob", "age" -> "12"))
 
-    val tableData = mutable.Seq(
-      mutable.Map[String, Any]("id" -> 1, "name" -> "Oli Bob", "age" -> "12").toJSDictionary
-    ).toJSArray
-
-
-    val settings : js.Dictionary[Any] = mutable.Map[String, Any](
+    val settings: js.Dictionary[Any] = js.Dictionary[Any](
       "height" -> 205,
-      "data"-> tableData,
-      "layout"-> "fitColumns",
-      "columns" -> mutable.Seq(
-        mutable.Map[String, Any]("title"-> "Name", "field" -> "name", "width" -> 150).toJSDictionary,
-        mutable.Map[String, Any]("title"-> "Age", "field" -> "age", "hozAlign" -> "left", "formatter" -> "progress").toJSDictionary
-      ).toJSArray,
+      "data"   -> tableData,
+      "layout" -> "fitColumns",
+      "columns" -> js.Array(
+        js.Dictionary[Any]("title" -> "Name", "field" -> "name", "width"   -> 150),
+        js.Dictionary[Any]("title" -> "Age", "field"  -> "age", "hozAlign" -> "left", "formatter" -> "progress")
+      ),
       "rowClick" -> f
-    ).toJSDictionary
-    new Tabulator("#example-table", settings)
+    )
+    tabulator = new Tabulator("#example-table", settings)
   }
 }
