@@ -21,6 +21,7 @@
         <a class='item @("active".when(tab == "dragdrop"))' href='@routes.Application.index("dragdrop")'> Drag & Drop</a>
         <a class='item @("active".when(tab == "jqueryPlugin"))' href='@routes.Application.index("jqueryPlugin")'>
             JQuery Plugin</a>
+        <a class='item @("active".when(tab == "tabulator"))' href='@routes.Application.index("tabulator")'>Tabulator</a>
 
         <div class="ui dropdown item" tabindex="0">
             Dropdown
@@ -81,6 +82,10 @@
         <div id="jqueryPlugin_content"></div>
     </div>
 
+    <div class="ui bottom attached tab segment @("active".when(tab == "tabulator"))">
+        <div id="tabulator_content"></div>
+    </div>
+
     <script>
             // menu 에서 data-tab 속성 대신에 href 를 사용해서 아래는 .tab() 은 제거해야 함 !!!
             // $('.menu .item').tab();
@@ -100,6 +105,10 @@
 
             $(document).ready(function () {
                 JQueryHtml.init("jqueryPlugin_content", "@searchForm("query").value.getOrElse("")")
+            })
+
+            $(document).ready(function () {
+                MyTable.init("tabulator_content", "@searchForm("query").value.getOrElse("")")
             })
     </script>
 }

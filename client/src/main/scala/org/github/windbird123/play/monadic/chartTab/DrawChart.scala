@@ -9,7 +9,7 @@ import scala.scalajs.js
 
 /////////////////////////////////////////////////////////////////////////////////////////
 // 여기 예시처럼 facade 를 이용해 Plotly 라이브러리를 사용할 수 있지만,
-// Plotly.newPlot java script 를 그대로 사용할 수도 있다. (심지어 scala json string 을 그대로 넘기면서)
+// Plotly.newPlot javascript 를 그대로 사용할 수도 있다. (심지어 scala json string 을 그대로 넘기면서)
 // Ractive Html 참고 !!!
 /////////////////////////////////////////////////////////////////////////////////////////
 object DrawChart {
