@@ -4,6 +4,7 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 
 @js.native
+@JSGlobal("Tabulator")
 class Tabulator(id: String, options: js.Dictionary[Any]) extends js.Any {
     /** You can add a row to the table using the addRow function.
     The first argument should be a row data object. If you do not pass data for a column, it will be left empty. To create a blank row (ie for a user to fill in), pass an empty object to the function.

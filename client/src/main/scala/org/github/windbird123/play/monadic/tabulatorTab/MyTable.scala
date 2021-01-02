@@ -1,7 +1,7 @@
 package org.github.windbird123.play.monadic.tabulatorTab
 
 import mhtml._
-import org.scalajs.dom.document
+import org.scalajs.dom.{document, window}
 import org.scalajs.dom.raw.{Event, HTMLElement}
 
 import scala.scalajs.js
@@ -37,8 +37,8 @@ object MyTable {
 
     mount(document.getElementById(id), content)
 
-    val f: js.Function2[Event, RowComponent, Unit] = (e: Event, row: RowComponent) =>
-      println(row.getData().asInstanceOf[HTMLElement].id)
+    val rowClickFunction: js.Function2[Event, RowComponent, Unit] = (e: Event, row: RowComponent) =>
+      window.alert(row.getData().asInstanceOf[HTMLElement].id + " was clicked")
 
     val tableData = js.Array(js.Dictionary[Any]("id" -> "2", "name" -> "Oli Bob", "age" -> "12"))
 
@@ -50,7 +50,7 @@ object MyTable {
         js.Dictionary[Any]("title" -> "Name", "field" -> "name", "width"   -> 150),
         js.Dictionary[Any]("title" -> "Age", "field"  -> "age", "hozAlign" -> "left", "formatter" -> "progress")
       ),
-      "rowClick" -> f
+      "rowClick" -> rowClickFunction
     )
     tabulator = new Tabulator("#example-table", settings)
   }
