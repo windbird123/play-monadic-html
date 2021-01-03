@@ -39,7 +39,15 @@ object MyTable {
       val name = row.getCell("name").getValue()
       println(name)
       row.getCells().foreach(cell => println(cell.getField() + ": " + cell.getValue()))
-      window.alert(row.getData().asInstanceOf[HTMLElement].id + " was clicked")
+//      window.alert(row.getData().asInstanceOf[HTMLElement].id + " was clicked")
+    }
+
+    val cellEditedFunction: js.Function1[CellComponent, Unit] = (cell: CellComponent) => {
+        println("TEST 333")
+      val field = cell.getField()
+      val oldValue = cell.getOldValue()
+      val newValue = cell.getValue()
+      println(s"field=[$field] was edited, old=[$oldValue], new=[$newValue]")
     }
 
     val tableData = js.Array(js.Dictionary[Any]("id" -> "2", "name" -> "Oli Bob", "age" -> "12"))
@@ -52,7 +60,8 @@ object MyTable {
         js.Dictionary[Any]("title" -> "Name", "field" -> "name", "width"   -> 150, "editor" -> "input"),
         js.Dictionary[Any]("title" -> "Age", "field"  -> "age", "hozAlign" -> "left", "formatter" -> "progress")
       ),
-      "rowClick" -> rowClickFunction
+      "rowClick" -> rowClickFunction,
+      "cellEdited" -> cellEditedFunction
     )
     tabulator = new Tabulator("#example-table", settings)
   }
