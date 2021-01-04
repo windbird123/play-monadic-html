@@ -18,32 +18,8 @@ class Tabulator(id: String, options: js.Dictionary[Any]) extends js.Any {
   def deleteRow(index: js.Array[js.Object]): Unit = js.native
   def deleteRow(index: js.Object): Unit           = js.native
 
-  def setFilter(p1: String): Unit = js.native
-
-  def setFilter(p1: String, p2: js.UndefOr[scala.Nothing], value: js.Any): Unit                 = js.native
-  def setFilter(p1: String, p2: js.Object): Unit                                                = js.native
-  def setFilter(p1: String, p2: js.Object, value: js.Any): Unit                                 = js.native
-  def setFilter(p1: js.Function2[ /* data */ js.Any, /* filterParams */ js.Any, Boolean]): Unit = js.native
-  def setFilter(
-    p1: js.Function2[ /* data */ js.Any, /* filterParams */ js.Any, Boolean],
-    p2: js.UndefOr[scala.Nothing],
-    value: js.UndefOr[scala.Nothing]
-  ): Unit = js.native
-  def setFilter(
-    p1: js.Function2[ /* data */ js.Any, /* filterParams */ js.Any, Boolean],
-    p2: js.UndefOr[scala.Nothing],
-    value: js.Any
-  ): Unit = js.native
-  def setFilter(p1: js.Function2[ /* data */ js.Any, /* filterParams */ js.Any, Boolean], p2: js.Object): Unit =
-    js.native
-  def setFilter(
-    p1: js.Function2[ /* data */ js.Any, /* filterParams */ js.Any, Boolean],
-    p2: js.Object,
-    value: js.UndefOr[scala.Nothing]
-  ): Unit = js.native
-  def setFilter(
-    p1: js.Function2[ /* data */ js.Any, /* filterParams */ js.Any, Boolean],
-    p2: js.Object,
-    value: js.Any
-  ): Unit = js.native
+  def setFilter(p1: String, p2: js.UndefOr[scala.Nothing], value: js.Any): Unit = js.native
+  def setFilter(p1: String, p2: js.Object): Unit                                = js.native
+  def setFilter(p1: String, p2: js.Object, value: js.Any): Unit                 = js.native
+  def clearFilter(): Unit = js.native
 }
