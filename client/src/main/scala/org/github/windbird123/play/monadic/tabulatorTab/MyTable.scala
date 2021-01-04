@@ -37,7 +37,7 @@ object MyTable {
 
     val content =
       <div>
-        <input type="text" onkeyup={(e: Event) => filterFunction(e)} onchange={(e: Event) => filterFunction(e)}></input>
+        <input type="text" onkeyup={filterFunction _} onchange={filterFunction _}></input>
         <button id="add-row" onclick={() => table.addRow(rowToAdd, true); ()}>Add windbird Row to top</button>
         <button id="del-row" onclick={() => table.deleteRow("2".asInstanceOf[js.Object])}>Delete Row "Oli Bob"</button>
         <div id="example-table"></div>
@@ -91,7 +91,7 @@ object MyTable {
         js.Dictionary[Any]("title" -> "Age", "field"  -> "age", "hozAlign"  -> "left", "formatter" -> "progress"),
         js.Dictionary[Any]("title" -> "Link", "field" -> "link", "hozAlign" -> "left", "formatter" -> "link",
           "formatterParams" -> js.Dictionary[Any](
-            "label"-> "goto",   // label 대신에 labelField 를 사용해 row 마다 링크 이름을 변경 가능
+            "label"-> "visit",   // label 대신에 labelField 를 사용해 row 마다 링크 이름을 변경 가능
             "url" -> urlGenerationFuntion,
             "target"-> "_blank"
           )
