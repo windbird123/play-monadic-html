@@ -71,7 +71,7 @@ object MyTable {
       s"http://www.naver.com"
     }
 
-    val tableData = js.Array(js.Dictionary[Any]("id" -> "2", "name" -> "Oli Bob", "age" -> "12", "link" -> "go"))
+    val tableData : js.Array[Any] = js.Array(js.Dictionary[Any]("id" -> "2", "name" -> "Oli Bob", "age" -> "12", "link" -> "go"))
 
     val settings: js.Dictionary[Any] = js.Dictionary[Any](
 //      "height"                 -> 205,
