@@ -17,17 +17,17 @@ object DrawChart {
   def plotLineChart() = {
     val lineDiv = document.getElementById("chart_line").asInstanceOf[HTMLDivElement]
 
-    import js.JSConverters._
-    val xy: js.Array[js.Dictionary[Any]] =
-      mutable
-        .Seq(
-          mutable
-            .Map[String, Any]("x" -> mutable.Seq(0, 1, 2, 3).toJSArray, "y" -> mutable.Seq(0, 1, 4, 9).toJSArray)
-            .toJSDictionary
-        )
-        .toJSArray
+    val xy = js.Array(js.Dictionary("x" -> js.Array(0, 1, 2, 3), "y" -> js.Array(0, 1, 4, 9)))
 
-//    val xy = js.Array(js.Dictionary("x" -> js.Array(0, 1,2,3), "y" -> js.Array(0, 1, 4, 9)))
+//    import js.JSConverters._
+//    val xy: js.Array[js.Dictionary[Any]] =
+//      mutable
+//        .Seq(
+//          mutable
+//            .Map[String, Any]("x" -> mutable.Seq(0, 1, 2, 3).toJSArray, "y" -> mutable.Seq(0, 1, 4, 9).toJSArray)
+//            .toJSDictionary
+//        )
+//        .toJSArray
 
     val layout: js.Dictionary[Any] = js.Dictionary("margin" -> js.Dictionary("t" -> 30))
     Plotly.newPlot(lineDiv, xy, layout)
