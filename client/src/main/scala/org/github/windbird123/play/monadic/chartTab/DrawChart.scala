@@ -27,8 +27,9 @@ object DrawChart {
         )
         .toJSArray
 
-    val layout: js.Dictionary[Any] = js.Dictionary("margin" -> js.Dictionary("t" -> 30))
+//    val xy = js.Array(js.Dictionary("x" -> js.Array(0, 1,2,3), "y" -> js.Array(0, 1, 4, 9)))
 
+    val layout: js.Dictionary[Any] = js.Dictionary("margin" -> js.Dictionary("t" -> 30))
     Plotly.newPlot(lineDiv, xy, layout)
 
     // 위의 Plotly 처럼 facade 를 만들어 할 수 있지만, 아래처럼 javascript method 를 직접 호출하는 것도 가능하다.
