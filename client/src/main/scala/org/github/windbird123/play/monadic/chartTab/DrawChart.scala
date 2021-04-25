@@ -30,6 +30,9 @@ object DrawChart {
     val layout: js.Dictionary[Any] = js.Dictionary("margin" -> js.Dictionary("t" -> 30))
 
     Plotly.newPlot(lineDiv, xy, layout)
+
+    // 위의 Plotly 처럼 facade 를 만들어 할 수 있지만, 아래처럼 javascript method 를 직접 호출하는 것도 가능하다.
+//    js.Dynamic.global.Plotly.newPlot(lineDiv, xy, layout)
   }
 
   // https://plotly.com/javascript/bar-charts/#basic-bar-chart
